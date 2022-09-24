@@ -1,23 +1,31 @@
 package com.app.runningbuddy.repositories
 
-import com.app.runningbuddy.room.Run
-import com.app.runningbuddy.room.RunDAO
+import com.app.runningbuddy.db.Run
+import com.app.runningbuddy.db.RunDao
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
-    private val runDAO: RunDAO
+    val runDao: RunDao
 ) {
-    suspend fun insertRun(run: Run) = runDAO.insertRun(run)
-    suspend fun deleteRun(run: Run) = runDAO.deleteRun(run)
+    suspend fun insertRun(run: Run) = runDao.insertRun(run)
 
-    fun getAllRunsSortedByDate() = runDAO.getAllRunsSortedByDate()
-    fun getAllRunsSortedByDistance() = runDAO.getAllRunsSortedByDistance()
-    fun getAllRunsSortedByTimeInMillis() = runDAO.getAllRunsSortedByTimeInMillis()
-    fun getAllRunsSortedByCaloriesBurned() = runDAO.getAllRunsSortedByCaloriesBurned()
-    fun getAllRunsSortedByAvgSpeed() = runDAO.getAllRunsSortedByAvgSpeed()
-    fun getTotalAvgSpeed() = runDAO.getTotalAvgSpeed()
-    fun getTotalDistance() = runDAO.getTotalDistance()
-    fun getTotalCaloriesBurned() = runDAO.getTotalCaloriesBurned()
-    fun getTotalTimeInMillis() = runDAO.getTotalTimeInMillis()
+    suspend fun deleteRun(run: Run) = runDao.deleteRun(run)
 
+    fun getAllRunsSortedByDate() = runDao.getAllRunsSortedByDate()
+
+    fun getAllRunsSortedByTimeInMillis() = runDao.getAllRunsSortedByTimeInMillis()
+
+    fun getAllRunsSortedByDistance() = runDao.getAllRunsSortedByDistance()
+
+    fun getAllRunsSortedByCaloriesBurned() = runDao.getAllRunsSortedByCaloriesBurned()
+
+    fun getAllRunsSortedByAvgSpeed() = runDao.getAllRunsSortedByAvgSpeed()
+
+    fun getTotalDistance() = runDao.getTotalDistance()
+
+    fun getTotalTimeInMillis() = runDao.getTotalTimeInMillis()
+
+    fun getTotalAvgSpeed() = runDao.getTotalAvgSpeed()
+
+    fun getTotalCaloriesBurned() = runDao.getTotalCaloriesBurned()
 }
